@@ -1,2 +1,3 @@
-res/
-app/
+res/test.db
+res/test.epub
+app/__pycache__/
