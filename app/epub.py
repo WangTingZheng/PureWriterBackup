@@ -1,46 +1,82 @@
 from ebooklib import epub
 
+page = ()
+spine = ["nav"]
 
-def test():
-    book = epub.EpubBook()
-    # set metadata
-    book.set_identifier("id123456")
-    book.set_title("Sample book")
-    book.set_language("zh-cn")
 
-    book.add_author("Author Authorowski")
-    book.add_author(
-        "Danko Bananko", file_as="Gospodin Danko Bananko", role="ill", uid="coauthor"
-    )
+def create_book():
+    return epub.EpubBook()
 
-    # create chapter
-    c1 = epub.EpubHtml(title="Intro", file_name="chap_01.xhtml", lang="hr")
-    c1.content = u"<h1>hello</h1><p>Zaba je skocila u baru.</p>"
 
-    # add chapter
-    book.add_item(c1)
+def add_metadata(book, metadata):
+    book.set_identifier(metadata["identifier"])
+    book.set_title(metadata["title"])
+    book.set_language(metadata["language"])
+    book.add_author(metadata["author"])
 
-    # define Table Of Contents
-    book.toc = (
-        epub.Link("chap_01.xhtml", "Introduction", "intro"),
-        (epub.Section("Simple book"), (c1,)),
-    )
 
-    # add default NCX and Nav file
-    book.add_item(epub.EpubNcx())
-    book.add_item(epub.EpubNav())
+def add_css(book):
+    style = """
+    @namespace epub "http://www.idpf.org/2007/ops";
+    body {
+        font-family: Cambria, Liberation Serif, Bitstream Vera Serif, Georgia, Times, Times New Roman, serif;
+    }
+    h2 {
+        text-align: left;
+        text-transform: uppercase;
+        font-weight: 200;
+    }
+    ol {
+            list-style-type: none;
+    }
+    ol > li:first-child {
+            margin-top: 0.3em;
+    }
+    nav[epub|type~='toc'] > ol > li > ol  {
+        list-style-type:square;
+    }
+    nav[epub|type~='toc'] > ol > li > ol > li {
+            margin-top: 0.3em;
+    }
+    """
 
-    # define CSS style
-    style = "BODY {color: white;}"
+    # add css file
     nav_css = epub.EpubItem(
         uid="style_nav", file_name="style/nav.css", media_type="text/css", content=style
     )
-
-    # add CSS file
     book.add_item(nav_css)
 
-    # basic spine
-    book.spine = ["nav", c1]
 
-    # write to the file
-    epub.write_epub("test.epub", book, {})
+
+
+
+def add_page_to_toc(c):
+    global page
+    page = page + (c,)
+
+
+def add_page(book, text):
+    global spine
+    c = epub.EpubHtml(
+        title=text["head"], file_name=text["head"] + ".xhtml", lang="zh-ch"
+    )
+    c.content = "<h1>%s</h1><p>%s</p>" % (text["head"], text["main"])
+    book.add_item(c)
+    spine.append(c)
+    add_page_to_toc(c)
+
+
+def main(metadata, text, number):
+    book = create_book()
+    add_metadata(book, metadata)
+    x = 0
+    while number != 0:
+        add_page(book, text[x])
+        x = x + 1
+        number = number - 1
+    book.toc = page
+    book.add_item(epub.EpubNcx())
+    book.add_item(epub.EpubNav())
+    add_css(book)
+    book.spine = spine
+    epub.write_epub("./res/test.epub", book, {})

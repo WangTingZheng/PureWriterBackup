@@ -24,4 +24,5 @@ def get_article(find_type, value):
     result = cursor.fetchall()
     return result
 
-print(get_article("title","如你所愿"))
+
+print(get_article("title", "如你所愿"))
