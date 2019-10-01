@@ -30,3 +30,9 @@ def return_paga():
     result = cursor.fetchall()
     return result
 
+
+def return_title():
+    sql="select title from Article"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    return result

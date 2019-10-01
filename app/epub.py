@@ -58,23 +58,25 @@ def add_page_to_toc(c):
     page = page + (c,)
 
 
-def add_page(book, text):
+def add_page(book, text,title,number):
     global spine
     c = epub.EpubHtml(
-        title=text["head"], file_name=text["head"] + ".xhtml", lang="zh-ch"
+        title=title, file_name=str(number)+ ".xhtml", lang="zh-ch"
     )
-    c.content = u"<h1>%s</h1><p class="">%s</p>" % (text["head"], text["main"])
+    temp='<html><head>'+title+'</head>'+'<body>'+text+'</body></html>'
+    c.content = "|"+temp+"|"
     book.add_item(c)
     spine.append(c)
     add_page_to_toc(c)
 
 
-def main(metadata, text, number):
+def main(metadata, text,title):
+    number = len(text)
     book = create_book()
     add_metadata(book, metadata)
     x = 0
     while number != 0:
-        add_page(book, text[x])
+        add_page(book, text[x],title[x],x)
         x = x + 1
         number = number - 1
     book.toc = page
