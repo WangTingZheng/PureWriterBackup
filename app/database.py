@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("../res/test.db")
+conn = sqlite3.connect("./res/test.db")
 cursor = conn.cursor()
 
 
@@ -24,5 +24,9 @@ def get_article(find_type, value):
     result = cursor.fetchall()
     return result
 
+def return_paga():
+    sql = "select content from Article"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    return result
 
-print(get_article("title", "如你所愿"))

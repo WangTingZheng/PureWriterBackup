@@ -26,6 +26,9 @@ def add_css(book):
         text-transform: uppercase;
         font-weight: 200;
     }
+    p {
+        text-indent:2em;
+    }
     ol {
             list-style-type: none;
     }
@@ -60,7 +63,7 @@ def add_page(book, text):
     c = epub.EpubHtml(
         title=text["head"], file_name=text["head"] + ".xhtml", lang="zh-ch"
     )
-    c.content = "<h1>%s</h1><p>%s</p>" % (text["head"], text["main"])
+    c.content = u"<h1>%s</h1><p class="">%s</p>" % (text["head"], text["main"])
     book.add_item(c)
     spine.append(c)
     add_page_to_toc(c)
