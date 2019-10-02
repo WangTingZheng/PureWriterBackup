@@ -9,6 +9,7 @@
 - Setting.xml：带有少量设置信息的文件，webdev的账号密码就保存于此
 
 使用时，把备份文件后缀名改为`.zip`，解压后得到一个后缀名为`.zip`的数据库文件，`放入`项目的./res`里，取名`test.db`
+
 在`CMD`或者`git`下cd到项目地址后执行：
 ```
 python -r install requirements.txt
