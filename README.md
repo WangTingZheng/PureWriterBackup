@@ -1,6 +1,6 @@
 # PureWriterBackup
 ## 环境依赖：
-- python3；
+- python3
 - pip
 
 本项目是针对纯纯写作的备份文件`.pwb`的解析api，`.pwb`是纯纯写作作者自己封装的后缀名，它实际上是一个`zip`的压缩包，通过解压缩，我们可以看到，它包含三个文件：
@@ -8,8 +8,8 @@
 - info.db：一个带有备份信息的数据库文件，采用的是sqlite数据库，包含大部分备份信息
 - Setting.xml：带有少量设置信息的文件，webdev的账号密码就保存于此
 
-使用时，把备份文件后缀名改为`.zip`，解压后得到一个后缀名为`.zip`的数据库文件，`放入`项目的./res`里，取名`test.db`
-在`CMD`或者`git`下cd到项目地址后执行：
+使用时，把备份文件后缀名改为`.zip`，解压后得到一个后缀名为`.zip`的数据库文件，`放入`项目的./res`里，取名`test.db`。
+在`CMD` 或者 ``git`下cd到项目地址后执行：
 ```
 python -r install requirements.txt
 python main.py
