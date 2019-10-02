@@ -3,7 +3,8 @@ from ebooklib import epub
 
 page = ()
 spine = ["nav"]
-x=0
+x = 0
+
 
 def create_book():
     return epub.EpubBook()
@@ -26,9 +27,6 @@ def add_css(book):
         text-align: left;
         text-transform: uppercase;
         font-weight: 200;
-    }
-    p {
-        text-indent:2em;
     }
     ol {
             list-style-type: none;
@@ -60,7 +58,13 @@ def add_page(book, text, title, number):
     global spine
     global x
     c = epub.EpubHtml(title=title, file_name=str(number) + ".xhtml", lang="zh-ch")
-    temp = u'<!DOCTYPE html><html lang="zh-cn"><head></head><body><h3>' + title +'</h3>'+ text + '</body></html>'
+    temp = (
+        u'<!DOCTYPE html><html lang="zh-cn"><head></head><body><h3>'
+        + title
+        + "</h3>"
+        + text
+        + "</body></html>"
+    )
     c.content = temp
     book.add_item(c)
     spine.append(c)
@@ -82,5 +86,3 @@ def main(metadata, text, title):
     add_css(book)
     book.spine = spine
     epub.write_epub("./res/test.epub", book, {})
-
-

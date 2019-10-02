@@ -24,6 +24,7 @@ def get_article(find_type, value):
     result = cursor.fetchall()
     return result
 
+
 def return_paga():
     sql = "select content from Article"
     cursor.execute(sql)
@@ -32,7 +33,7 @@ def return_paga():
 
 
 def return_title():
-    sql="select title from Article"
+    sql = "select title from Article"
     cursor.execute(sql)
     result = cursor.fetchall()
     return result
