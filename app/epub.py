@@ -1,8 +1,9 @@
 from ebooklib import epub
+import lxml.etree as etree
 
 page = ()
 spine = ["nav"]
-
+x=0
 
 def create_book():
     return epub.EpubBook()
@@ -50,33 +51,29 @@ def add_css(book):
     book.add_item(nav_css)
 
 
-
-
-
 def add_page_to_toc(c):
     global page
     page = page + (c,)
 
 
-def add_page(book, text,title,number):
+def add_page(book, text, title, number):
     global spine
-    c = epub.EpubHtml(
-        title=title, file_name=str(number)+ ".xhtml", lang="zh-ch"
-    )
-    temp='<html><head>'+title+'</head>'+'<body>'+text+'</body></html>'
-    c.content = "|"+temp+"|"
+    global x
+    c = epub.EpubHtml(title=title, file_name=str(number) + ".xhtml", lang="zh-ch")
+    temp = u'<!DOCTYPE html><html lang="zh-cn"><head></head><body><h3>' + title +'</h3>'+ text + '</body></html>'
+    c.content = temp
     book.add_item(c)
     spine.append(c)
     add_page_to_toc(c)
 
 
-def main(metadata, text,title):
+def main(metadata, text, title):
     number = len(text)
     book = create_book()
     add_metadata(book, metadata)
     x = 0
     while number != 0:
-        add_page(book, text[x],title[x],x)
+        add_page(book, text[x], title[x], x)
         x = x + 1
         number = number - 1
     book.toc = page
