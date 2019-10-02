@@ -4,10 +4,14 @@
 - info.db：一个带有备份信息的数据库文件，采用的是sqlite数据库，包含大部分备份信息
 - Setting.xml：带有少量设置信息的文件，webdev的账号密码就保存于此
 
-使用时，把备份文件放入`./res`里，取名`test.db`，执行：
+使用时，把备份文件后缀名改为`.zip`，解压后得到一个后缀名为`.zip`的数据库文件，`放入`项目的./res`里，取名`test.db`，执行：
 ```
+python -r install requirements.txt
 python main.py
 ```
+在`./res`文件夹下就会生成一个叫`test.epub`的电子书文件
+<details>
+<summary><mark><font color=darkred>函数</font></mark></summary>
 
 # 函数
 ## 电子书
@@ -36,18 +40,12 @@ metadata={'identifier':'123','title':'test','language':'zh-cn','author':'wtz'}
   - c：由`epub.EpubHtml`创建的页面
 - 返回值：无
 
->add_page(book, text)
+>add_page(book, text title, number)
 - 功能：定义一个页面，添加到电子书和目录、spine
 - 形参：book，text
   - book：要添加的目标电子书
-  - text：要添加的页面信息，它是一个元组：
-```python
-txt1={'head':'this is a head','main':'this is main'}
-```
+  - text：要添加的html页面信息
+  - title：文章标题
+  - number：文章标号
 - 返回值：无
-> main(metadata, text, number)
-- 功能：创建一个电子书
-- 形参：metadata，text，number
-  - metadata：元数据
-  - text：一个由number个页面信息字典组成的列表
-  - number：text列表里的字典/页面的个数
+</details>

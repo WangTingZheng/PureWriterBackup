@@ -1,5 +1,5 @@
 from ebooklib import epub
-import lxml.etree as etree
+
 
 page = ()
 spine = ["nav"]
@@ -82,3 +82,5 @@ def main(metadata, text, title):
     add_css(book)
     book.spine = spine
     epub.write_epub("./res/test.epub", book, {})
+
+
