@@ -85,4 +85,5 @@ def main(metadata, text, title):
     book.add_item(epub.EpubNav())
     add_css(book)
     book.spine = spine
-    epub.write_epub("./res/test.epub", book, {})
+    epub.write_epub("./test.epub", book, {})
+
