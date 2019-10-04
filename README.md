@@ -1,5 +1,6 @@
-# PureWriterBackup
-## 环境依赖：
+# 使用
+[release](https://github.com/WangTingZheng/PureWriterBackup/releases/tag/v1.0.0)
+# 环境依赖：
 - python3
 - pip
 
