@@ -1,7 +1,6 @@
 res/bin/
 res/temp/
 res/zip
-dist
 build
 app/__pycache__/
 

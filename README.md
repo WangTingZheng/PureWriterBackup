@@ -1,6 +1,22 @@
-# 使用
-[release](https://github.com/WangTingZheng/PureWriterBackup/releases/tag/v1.0.0)
-# 环境依赖：
+# <p align="center">📒PureWriterBackup: 为纯纯写作设计的导出工具</p>
+
+<p align="center">
+    <a href="https://github.com/WangTingZheng/PureWriterBackup/releases/tag/v1.0.0">
+        <img src="https://img.shields.io/badge/release-v1.0.0-brightgreen.svg">
+    </a>
+    <a href="">
+        <img src="https://img.shields.io/badge/状态-随缘更新-brightgreen.svg">
+    </a>
+    <a href="https://github.com/python/cpython">
+        <img src="https://img.shields.io/badge/Python-3.7.4-blue.svg">
+    </a>
+    <a href="https://github.com/WangTingZheng/PureWriterBackup">
+      <img src="https://img.shields.io/github/stars/WangTingZheng/PureWriterBackup.svg?style=social">
+    </a>
+    
+</p>
+
+## 环境依赖：
 - python3
 - pip
 
@@ -19,9 +35,9 @@ python main.py
 <details>
 <summary><mark><font color=darkred>函数</font></mark></summary>
 
-# 函数
-## 电子书
->create_book():
+## 函数
+### 电子书
+>create_book( ):
 - 功能：创建一个`.epub`电子书变量
 - 形参：无
 - 返回值：返回创建好的电子书变量
