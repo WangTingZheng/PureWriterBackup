@@ -7,6 +7,9 @@
     <a href="">
         <img src="https://img.shields.io/badge/状态-随缘更新-brightgreen.svg">
     </a>
+    <a href="https://github.com/WangTingZheng/PureWriterBackup/blob/master/README-CN.md">
+        <img src="https://img.shields.io/badge/README-中文-brightgreen.svg">
+    </a>
     <a href="https://github.com/python/cpython">
         <img src="https://img.shields.io/badge/Python-3.7.4-blue.svg">
     </a>
@@ -15,20 +18,25 @@
     </a>
 </p>
 
-## 使用
-### 提取数据库文件
-> 旧版本
-
-旧版本的纯纯写作的备份文件是一个后缀名为`.db`的文件，只是一个`sqlite`数据库文件，你可以直接准备好这个文件，不需要进行进一步的处理；
-
-> 新版本
-
-#### 介绍
-新版本的纯纯写作封装了自己的备份文件格式，叫`.pwb`，`pwb`是`pure writer backup`的缩写，它实际上是一个压缩包
-#### 提取数据库文件
-- 把`.pwb`文件改成后缀名为`.zip`的文件
-- 把这个压缩包解压缩
-- 拿到里面一个后缀名为`.db`的文件
-### 转化
-- 把数据库文件放在与`main.exe`同一文件夹
-- 执行`main.exe`
+## Format
+- epub
+## Usage
+### get database from PureWriter
+#### export backup file
+- open PureWriter app
+- open Setting
+- chick Backup
+- chick Back up to local storage now
+#### get *.db file
+- old version: copy the `*.db` file from phone to PC directly
+- new version
+  -  copy th `*.pwb` file from phone to PC
+  -  change file name from `*.pwb` to `*.zip`
+  -  unzip `*.zip`
+  -  copy `*.db`
+### convert *.db to *.epub
+  - copy `*.db` file to the folder which has `main.exe`
+  - run `main.exe`
+## To-Do
+- GUI 
+- more format
