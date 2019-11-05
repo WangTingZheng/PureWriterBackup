@@ -40,3 +40,6 @@
 ## To-Do
 - GUI 
 - more format
+- markdown Render
+- send to kindle
+- Android clinet
