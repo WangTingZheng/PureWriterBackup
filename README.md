@@ -1,4 +1,4 @@
-# <p align="center">📒PureWriterBackup: 为纯纯写作设计的导出工具</p>
+# <p align="center">📒PureWriterBackup: A convert tool for PureWriter</p>
 
 <p align="center">
     <a href="https://github.com/WangTingZheng/PureWriterBackup/releases/tag/v1.0.0">
